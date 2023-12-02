@@ -1,11 +1,15 @@
-const express = require('express');
-const app = express();
-const db = require('./db/connection');
-const PORT = 3000;
+const express       = require('express');
+const app           = express();
+const db            = require('./db/connection');
+const bodyParser    = require('body-parser');
+const PORT          = 3000;
 
 app.listen(PORT, function() {
     console.log(`Está escutando a porta ${PORT}`);
 });
+
+// Body parser
+app.use(bodyParser.urlencoded({extended: false}));
 
 // DB connection
 db
@@ -22,3 +26,6 @@ db
 app.get('/', (req, res) => {
     res.send("Está funcionando");
 })
+
+// Jobs routes
+app.use('/jobs', require('./routes/jobs'));
