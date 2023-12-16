@@ -2,7 +2,7 @@
 Projeto de uma plataforma para programadores encontrarem vagas de trabalho
 
 Tecnologias utilizadas:
-- HTML, CSS, JS
+- Handlebars, CSS, JS
 - Express
 - SQLite
 - Postman
