@@ -2,11 +2,19 @@ const express   = require('express');
 const router    = express.Router();
 const Job       = require('../models/Job');
 
-// Test route
-router.get('/test', (req, res) => {
-    res.send("Deu certo");
-});
+// Detalhe da vaga
+router.get('/view/:id', (req, res) => Job.findOne({
+    where: {id: req.params.id}
+    })
+    .then(job => {
+        res.render('view', {
+            job
+        });
+    })
+    .catch(err => console.log('Erro: ', err))
+);
 
+// Form da rota de envio
 router.get('/add', (req, res) => {
     res.render('add');
 })
